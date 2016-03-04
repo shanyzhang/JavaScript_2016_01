@@ -16,23 +16,23 @@ Array.prototype.toString=function(){//方法重写，就把原来的那个toStri
 88===[];
 Array.prototype.abcdefg=function(){
 	console.log("逗你玩");
-	}
+	};
 
 
 var a=[];
-a.abcdefg()
-a.toString()
+a.abcdefg();
+a.toString();
 ![]==false;//这样![]，不会自动转换为字符串
 []==true;
 //对象和值类型的做比较
 //首先把对象
-[]==![]
+[]==![];
 //以下这两个题，三观被摧毁不了，再有布尔比较的题就没问题了
 ;[]==false;
 null-3;//结果是多少？ 空字符串，false,null它们在做自动类型转换的时候都是0
 ![]==false;
 
-[]==![]
+[]==![];
 
 function fn(){///自动n个数求和的方法
 	var count=null;	
@@ -43,7 +43,7 @@ function fn(){///自动n个数求和的方法
 }
 
 [1]==1;
-[1,2,3]==1
+[1,2,3]==1;
 fn();
 
 
