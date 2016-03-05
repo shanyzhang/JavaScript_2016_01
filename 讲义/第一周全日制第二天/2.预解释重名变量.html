@@ -10,18 +10,18 @@
     var n = 9;
     var n;
     var n = 3;//在预解释时,把带var关键字的提前声明,但是如果看到有重复的变量,不会报错,会忽视(重复声明变量是没有意义)
-    //console.log(n);
+    //console.log(n);//3
 
     //重名变量带初始值(相当于做了个赋值表达式的运算)
-    console.log(b);
+    console.log(b);//返回函数本身
     var b = 10;
     function b(x){
         return  x++;
     }
-    console.log(b);
+    console.log(b);//10
     //代码执行的时候,var变量不会再申明,function关键字的不会再定义,只会做赋值的操作
 //    var b = 20;
-//    console.log(b);
+//    console.log(b);//20
 //    function b(x){
 //        return  x++;
 //    }

@@ -17,17 +17,17 @@
 
     //自执行函数是声明+赋值+执行一起做了
     ~(function(){
-        console.log("自动执行了");
+        console.log("自动执行了");//自动执行了
     })()
 
     var num = 20;
     function fn(){
-        //console.log(sum);
-        console.log(num);//从自己的作用域里找到num这个变量的存在,则不会往上找
+        //console.log(sum);//报错
+        console.log(num);//从自己的作用域里找到num这个变量的存在,则不会往上找，undefined
         return function sum(){};//return 后面的方法不预解释(既不会声明也不会赋值)
         var num = 10; //return 下面的代码不再执行了,但是会预解释
     }
-   // fn();
+    //fn();
 
 
     function fn2(){console.log("我是在全局作用域下")};
