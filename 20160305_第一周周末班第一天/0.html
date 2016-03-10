@@ -5,20 +5,30 @@
     <title></title>
 </head>
 <body>
+<<!--div id="outer">
+    <div id="content">
+       10万字。。。。。。。。
+        可能还有字
+    </div>
+    可能还有字
+</div>-->
 <script>
-    var i = 10;
-    function fn() {
-        var i = 5;
+    var num = 10;
+    var obj = {num: 20};
+    obj.fn = (function (num) {
+        this.num = num * 3;
+        num++;
         return function (n) {
-            console.log(n + (++i));
+            this.num += n;
+            num++;
+            console.log(num);
         }
-    }
-    var f = fn();
-    f(20);
-    f(30);
-    fn()(20);//->fn()让fn这个函数执行,然后在把fn这个函数执行完成的返回结果xxxfff222紧接着在执行
-    fn()(30);
-    console.log(i);
+    })(obj.num);
+    var fn = obj.fn;
+    fn(5);
+    obj.fn(10);
+    console.log(num, obj.num);
+
 
 
 </script>
