@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+function likeToArray(likeArray){
+    try{
+    return [].slice.call(likeArray,0);
+    }
+    catch(e){
+        var ary=[];
+        for(var i=0;i<ary.length;i++){
+            ary[ary.length]=likeArray[i];
+        }
+    }return ary;
+}
+    var oTab=document.getElementById("oTab");
+    var oThead=oTab.getElementsByTagName("thead")[0];
+    var oTbody=oTab.getElementsByTagName("tbody")[0];
+    var rows=oTbody.rows;
+    function tableSort(n){
+        var ary=listToArray(rows);
+        ary.sort(function(a,b){
+            var prev= a.cells[n].innerHTML;
+            var next= b.cells[n].innerHTML;
+            if(isNaN(prev)){
+                return prev.localeCompare(next)
+            }
+        })
+    }
+//函数本身也会有一些自己的属性
+    //->length:0 形参的个数
+    //->name:"Fn"
+    //->prototype 类的原型，在原型上定义的方法过都是当前Fn这个类实例的公有方法
+    //->call方法的作用:
+    //->首先我们让原型上的call方法执行，在执行call方法的时候，我们让fn方法中的this变为第一个参数值obj；然后再把fn这个函数执行
+    //apply和call方法的作用是一模一样的，都是用来改变方法的this关键字并且把方法招待而且在严格模式下和非严格模式下对于第一个参数是null/undefined这种情况的规律也是一样的；
+    //call 在给fn参数的时候，是一个个的传递值的，而apply不是一个个传，而是把要给fn传递的参数值统一的放在一个数组中时行操作，但是也相当于一个个的给fn的形参赋值
+    //bind:这个方法在IE6~8下不兼容->和call/apply类似都是用来改变this关键字的
+    //我们在JS中使用try、catch进行浏览吕的异常信息捕获
+</script>
