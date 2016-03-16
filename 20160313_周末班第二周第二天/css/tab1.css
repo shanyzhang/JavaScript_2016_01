@@ -1,49 +1,40 @@
 @charset "utf-8";
-* {
+*{
     margin: 0;
     padding: 0;
-    font-family: "微软雅黑";
+    font-family:"微软雅黑" ;
     font-size: 14px;
-    -webkit-user-select: none;/*不让里面的东西被选中*/
+    -webkit-user-select: none;
 }
-
-.box {
+.box{
     margin: 20px auto;
     padding: 20px;
     width: 400px;
     border: 1px solid #008000;
-
     border-radius: 10px;
     box-shadow: 3px 3px 10px 0 #DBEEBD;
 }
-
-.box thead {
-    background: #008000;
-    color: #fff;
+.box thead{
+    background:#008000 ;
+    color: #ffffff;
 }
-
-.box thead tr {
+.box thead tr{
     height: 35px;
 }
-
-.box thead tr th {
+.box thead tr th{
     width: 100px;
     text-align: center;
 }
-
-.box thead tr th.cursor {
+.box thead tr th.cursor{
     cursor: pointer;
 }
-
-.box tbody tr {
+.box tbody tr{
     height: 30px;
 }
-
-.box tbody tr.bg {
+.box tbody tr.bg{
     background: lightgreen;
 }
-
-.box tbody tr td {
+.box tbody tr td{
     width: 100px;
     text-align: center;
 }
