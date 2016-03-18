@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="a b c d">1111</li>
+        <li class="a d e f">2222</li>
+        <li class=" a b select c ">3333</li>
+        <li class="a.b c slect c-d">4444</li>
+        <li class="a e b f c">5555</li>
+        <li class="b-c f slect-a">6666</li>
+    </ul>
+</body>
+</html>
+<script type="text/javascript">
+    function getElesByClass(str){
+        str=str.replace(/^ +| +$/g,"");
+        var aClassName=str.split(/ +/);
+        var eles=document.getElementsByTagName("*");
+        for(var i=0;i<aClassName.length;i++){
+            var a=[];//准备放筛选结果的
+            var reg=new RegExp("(^| )"+aClassName[i]+"( |$)");
+            for(var j=0;j<eles.length;j++){
+                if(reg.test(eles[j].className)){
+                    a.push(eles[j]);
+                }
+            }
+            eles=a;//相当于byClass方法中的return a这一步
+        }
+        return eles;
+    }
+    var eles=getElesByClass("a b c");
+    for(var i=0;i<eles.length;i++){
+        eles[i].style.backgroundColor="red";
+    }
+</script>

@@ -41,8 +41,8 @@ function getElesByClass(str){
 		var a=[];//准备放筛选结果的
 		var reg=new RegExp("(^| )"+aClassName[i]+"( |$)");
 		for(var j=0;j<eles.length;j++){
-			if(reg.test(eles[i].className)){
-				a.push(eles[i]);	
+			if(reg.test(eles[j].className)){
+				a.push(eles[j]);
 			}
 				
 		}

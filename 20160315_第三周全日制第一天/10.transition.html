@@ -9,10 +9,10 @@
             height: 100px;
             background: red;
         }
-        div:hover{
+        .ab{
             width: 300px;
-            transition: width 1s linear ;
-            -webkit-transition: width 1s linear 1s;
+            transition: width 5s;
+            -webkit-transition: width 5s;
             /*
             第一个参数 :transition-property:设置的css属性,不写的话默认是all
             第二个参数:transition-duration 动画执行的时间
@@ -20,6 +20,29 @@
             第四个参数: transition-delay:动画延迟的时间
             */
         }
+        #bb{
+            margin-top: 30px;
+            width: 100px;
+            height: 100px;
+            background: black;
+        }
+        #bb{
+            animation-name: move;
+            -webkit-animation-name: move;
+            animation-delay: 2s;
+            -webkit-animation-delay: 2s;
+            animation-duration: 5s;
+            -webkit-animation-duration: 5s;
+        }
+        @-webkit-keyframes move {
+            0%{
+                width: 100px;
+            }
+            100%{
+                width: 300px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -27,6 +50,15 @@
     transition过渡的动画,只能设置起始值和结束的值
     控制css属性值在一定时间内,有一个css属性值向另一个css属性值变化
 -->
-<div></div>
+<div id="ab"></div>
+<div id="bb"></div>
+<script type="text/javascript">
+    var oDiv=document.getElementById("ab");
+     window.setTimeout(function(){
+         oDiv.className="ab";
+     },4000);
+
+//    oDiv.className="";
+</script>
 </body>
 </html>

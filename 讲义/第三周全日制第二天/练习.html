@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li class="a b c d">1111</li>
+    <li class="a d e f">2222</li>
+    <li class=" a b select c ">3333</li>
+    <li class="a.b c slect c-d">4444</li>
+    <li class="a e b f c">5555</li>
+    <li class="b-c f slect-a">6666</li>
+</ul>
+</body>
+</html>
+<script type="text/javascript">
+//    function getElesClass(str){
+//        str=str.replace(/^ +| +$/g,"");
+//        var aClassName=str.split(/ +/);
+//        var eles=document.getElementsByTagName("*");
+//        for(var i=0;i<aClassName.length;i++){
+//            var a=[];
+//            var reg=new RegExp("(^| )"+aClassName[i]+"( |$)");
+//            for(var j=0;j<eles.length;j++){
+//                if(reg.test(eles[j].className)){
+//                    a.push(eles[j]);
+//                }
+//            }
+//            eles=a;
+//        }
+//        return eles;
+//    }
+//    var eles=getElesClass("a b ");
+//    for(var i=0;eles.length;i++){
+//        eles[i].style.backgroundColor="red";
+//    }
+    function getElesClass(str){
+        str=str.replace(/^ +| +$/g,"");
+        var aClassName=str.split(/ +/);
+        var eles=document.getElementsByTagName("*");
+        for(var i=0;i<aClassName.length;i++){
+            var a=[];
+            var reg=new RegExp("(^| )"+aClassName[i]+"( |$)");
+            for(var j=0;j<eles.length;j++){
+                if(reg.test(eles[j].className)){
+                    a.push(eles[j]);
+                }
+            }
+            eles=a;
+        }
+        return eles;
+    }
+var eles=getElesClass("a b ");
+for(var i=0;i<eles.length;i++){
+    eles[i].style.backgroundColor="red";
+}
+    //?:匹配不捕获
+</script>

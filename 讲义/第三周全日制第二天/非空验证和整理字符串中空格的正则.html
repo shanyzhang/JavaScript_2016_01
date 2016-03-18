@@ -16,27 +16,26 @@
 <script>
 
 var oInput=document.getElementById("input1");
-oInput.onfocus=function(){
-	if(this.value==this.defaultValue){
+oInput.onfocus=function(){//这个方法的作用：判断是否输入了文字，onfocus获得焦点
+	if(this.value==this.defaultValue){//如果当前的值，等于默认的值
 		this.value="";
 	}
-}
-
-oInput.onblur=function(){
+};
+var oSpan=document.createElement("span");
+oInput.onblur=function(){//onblur:失去焦点
 	//var reg=/^ *$/;//空字符串验证
 	var reg=/ +/g;//一定要加g
 	
 	//if(reg.test(this.value)){
 	if(!this.value.replace(reg,"").length){
 		this.value=this.defaultValue;
-		var oSpan=document.createElement("span");
 		oSpan.innerHTML="*请输入有效女朋友";
 		oSpan.style.color="red";
 		oSpan.style.fontWeight="bold";	
 		this.parentNode.appendChild(oSpan);
 	}else{//如果输入正确，则用绿色字表达“输入正确”
-		this.value=this.value.replace(reg,"")
-		var oSpan=document.createElement("span");
+		this.value=this.value.replace(reg,"");
+		//var oSpan=document.createElement("span");
 		oSpan.innerHTML="输入正确";
 		oSpan.style.color="green";
 		oSpan.style.fontWeight="bold";
