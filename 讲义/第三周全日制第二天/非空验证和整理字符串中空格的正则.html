@@ -6,7 +6,7 @@
 </head>
 
 <body>
-请自行修证提示信息重复的问题
+请自行修正提示信息重复的问题
 <p>
 <input value="请输入您的前女友" id="input1">
 </p>
@@ -16,6 +16,7 @@
 <script>
 
 var oInput=document.getElementById("input1");
+<<<<<<< HEAD:讲义/第三周全日制第二天/非空验证和整理字符串中空格的正则.html
 oInput.onfocus=function(){//这个方法的作用：判断是否输入了文字，onfocus获得焦点
 	if(this.value==this.defaultValue){//如果当前的值，等于默认的值
 		this.value="";
@@ -23,12 +24,24 @@ oInput.onfocus=function(){//这个方法的作用：判断是否输入了文字�
 };
 var oSpan=document.createElement("span");
 oInput.onblur=function(){//onblur:失去焦点
+=======
+//var oSpan=document.createElement("span");
+oInput.onfocus=function(){//onfocus表单得到焦点
+	if(this.value==this.defaultValue){
+		this.value="";
+	}
+}
+
+oInput.onblur=function(){//onblur表单失去焦点
+>>>>>>> 9f7c2dd9be6836ce2e03bb1ecb8e87905aaba549:讲义/非空验证和整理字符串中空格的正则.html
 	//var reg=/^ *$/;//空字符串验证
 	var reg=/ +/g;//一定要加g
 	
 	//if(reg.test(this.value)){
+		var oSpan=document.getElementById("message");
 	if(!this.value.replace(reg,"").length){
 		this.value=this.defaultValue;
+<<<<<<< HEAD:讲义/第三周全日制第二天/非空验证和整理字符串中空格的正则.html
 		oSpan.innerHTML="*请输入有效女朋友";
 		oSpan.style.color="red";
 		oSpan.style.fontWeight="bold";	
@@ -40,6 +53,34 @@ oInput.onblur=function(){//onblur:失去焦点
 		oSpan.style.color="green";
 		oSpan.style.fontWeight="bold";
 		this.parentNode.appendChild(oSpan);	
+=======
+		
+		if(!oSpan){//如果没有这个提示元素，则创建
+			var oSpan=document.createElement("span");
+			oSpan.id="message";
+			oSpan.innerHTML="*请输入有效女朋友";
+			oSpan.style.color="red";
+			oSpan.style.fontWeight="bold";	
+			this.parentNode.appendChild(oSpan);
+		}else{//有这个提示元素则直接修改
+			oSpan.innerHTML="*请输入有效女朋友";
+			oSpan.style.color="red";
+		}
+	}else{//如果输入正确，则用绿色字表达“输入正确”
+		this.value=this.value.replace(reg,"")
+		if(!oSpan){
+			
+			var oSpan=document.createElement("span");
+			oSpan.id="message";
+			oSpan.innerHTML="输入正确";
+			oSpan.style.color="green";
+			oSpan.style.fontWeight="bold";
+			this.parentNode.appendChild(oSpan);	
+		}else{
+			oSpan.innerHTML="输入正确";
+			oSpan.style.color="green";
+		}
+>>>>>>> 9f7c2dd9be6836ce2e03bb1ecb8e87905aaba549:讲义/非空验证和整理字符串中空格的正则.html
 		
 	}
 		
