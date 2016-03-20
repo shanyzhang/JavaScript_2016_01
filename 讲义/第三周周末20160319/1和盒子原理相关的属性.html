@@ -57,8 +57,8 @@ document.documentElement.clientHeight||document.body.clientHeight;//如果不写
 
 //JS原生代码里没有计算(内容)width+padding+border+margin的值
 $("#div4").width();//内容的宽
-$("#div4").innerWidth();//clientWidth
-$("#div4").outerWidth();//offsetWidth
+$("#div4").innerWidth();//clientWidth(内容的宽+padding)
+$("#div4").outerWidth();//offsetWidth(内容的宽+padding+border)
 $("#div4").outerWidth(true);//offsetWidth+margin
 
 

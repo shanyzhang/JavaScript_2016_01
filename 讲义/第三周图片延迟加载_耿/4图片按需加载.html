@@ -33,12 +33,11 @@ function offset(ele){
 	}
 	return {l:l,t:t};	
 }
-
 //var oImgs=document.images;//DHTML 五百年前（老年间的）表达网页结构的属性（方式）
 var oImgs=document.getElementsByTagName("img");
 for(var i=0;i<oImgs.length;i++){
 	var oImg=oImgs[i];
-	oImg.t=offset(oImg).t;	
+	oImg.t=offset(oImg).t;
 }
 
 window.onscroll=function(){

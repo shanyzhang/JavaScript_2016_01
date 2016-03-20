@@ -26,7 +26,6 @@
 <img src="default.gif">
 </body>
 </html>
-
 <script>
     function offset(ele) {
         var l = ele.offsetLeft;
@@ -40,28 +39,26 @@
         return {l: l, t: t};
     }
     var oImgs = document.getElementsByTagName("img");
-    for (var i = 0; i < oImgs.length; i++) {
-        window.onscroll = (function (i) {
+        window.onscroll = function () {
             var h = (document.documentElement.scrollTop || document.body.scrollTop) + (document.documentElement.clientHeight || document.body.clientHeight);
-      return function img(i) {
-                if (h > oImgs[i].t + oImgs[i].offsetHeight) {
-                    //1、不直接让img标签加载真实图片,而是让其显示一张表示加载中的图片，以增强用户体验
-                    oImgs[i].src = "o_loading.gif";
-                    //2、然后创建一个图片对象，让其悄悄下载真实图片
-                    var imgTemp = new Image;
-                    imgTemp.src = oImgs[i].getAttribute("realSrc") + "?" + Math.random();
-                    //3、等远程服务器上的图片已经下载到本地缓存，则再把图片地址赋给img标签让其显示
-                    console.log(imgTemp.src);//加调试用的代码
-                    imgTemp.onload = function () {
-                        oImgs[i].src = this.src;
-                        console.log(this.src);//加调试用的代码
-                    }
-                    imgTemp.onerror = function () {//看看是不是失败了
-                        console.log("竟然失败了！！");
-                    }
+
+            if (h > oImgs[i].t + oImgs[i].offsetHeight) {
+                //1、不直接让img标签加载真实图片,而是让其显示一张表示加载中的图片，以增强用户体验
+                oImgs[i].src = "o_loading.gif";
+                //2、然后创建一个图片对象，让其悄悄下载真实图片
+                var imgTemp = new Image;
+                imgTemp.src = oImgs[i].getAttribute("realSrc") + "?" + Math.random();
+                //3、等远程服务器上的图片已经下载到本地缓存，则再把图片地址赋给img标签让其显示
+                console.log(imgTemp.src);//加调试用的代码
+                imgTemp.onload = function () {
+                    oImgs[i].src = this.src;
+                    console.log(this.src);//加调试用的代码
                 }
-                img(i);
+                imgTemp.onerror = function () {//看看是不是失败了
+                    console.log("竟然失败了！！");
+                }
             }
-        })(i)
+
+        }
     }
 </script>

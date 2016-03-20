@@ -47,10 +47,8 @@ window.onscroll=function(){
 		var h=(document.documentElement.scrollTop||document.body.scrollTop)+(document.documentElement.clientHeight||document.body.clientHeight);
 		
 		for(var i=0;i<oImgs.length;i++){
-			
 			var oImg=oImgs[i];
 			if(h>oImg.b){
-				
 				var realSrc=oImg.getAttribute("realImg")+"?"+Math.random();
 				oImg.src="o_loading.gif";
 				var tempImg=new Image;

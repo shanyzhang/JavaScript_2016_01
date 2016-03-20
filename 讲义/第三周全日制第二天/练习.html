@@ -36,22 +36,23 @@
 //    for(var i=0;eles.length;i++){
 //        eles[i].style.backgroundColor="red";
 //    }
-    function getElesClass(str){
-        str=str.replace(/^ +| +$/g,"");
-        var aClassName=str.split(/ +/);
-        var eles=document.getElementsByTagName("*");
-        for(var i=0;i<aClassName.length;i++){
-            var a=[];
-            var reg=new RegExp("(^| )"+aClassName[i]+"( |$)");
-            for(var j=0;j<eles.length;j++){
-                if(reg.test(eles[j].className)){
-                    a.push(eles[j]);
-                }
+
+function getElesClass(str){
+    str=str.replace(/^ +| +$/g,"");
+    var aClassName=str.split(/ +/);
+    var eles=document.getElementsByTagName("*");
+    for(var i=0;i<aClassName.length;i++){
+        var a=[];
+        var reg=RegExp("(^| )"+aClassName[i]+"( |$)");
+        for(var j=0;j<eles.length;j++){
+            if(reg.test(eles[j].className)){
+                a.push(eles[j])
             }
-            eles=a;
         }
-        return eles;
+        eles=a;
     }
+    return eles;
+}
 var eles=getElesClass("a b ");
 for(var i=0;i<eles.length;i++){
     eles[i].style.backgroundColor="red";
