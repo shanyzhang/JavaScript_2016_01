@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        img {
+            display: block;
+            margin: 10px;
+            width: 300px;
+            height: 200px;
+
+        }
+    </style>
+</head>
+<body>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<img realImg="http://pic250.quanjing.com/imageclk005/ic01303589.jpg" src="o_loading.gif">
+
+<img realImg="http://7xavvn.com2.z0.glb.qiniucdn.com/22/1397203880305_nv17kg.jpg!bigger" src="o_loading.gif" src="o_loading.gif">
+
+<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466926.jpg" src="o_loading.gif">
+<img realImg="http://pic250.quanjing.com/imageclk007/ic01704768.jpg" src="o_loading.gif">
+<img realImg="http://pic1.win4000.com/pic/9/8c/0a08466928.jpg" src="o_loading.gif">
+</body>
+</html>
+<script type="text/javascript">
+    function offset(ele) {
+        var t = ele.offsetTop;
+        var l = ele.offsetLeft;
+        var p = ele.offsetParent;
+        while (p) {
+            if (window.navigator.userAgent.indexOf("MSIE 8") == -1) {
+                t += p.offsetTop + p.clientTop;
+                l += p.offsetLeft + p.clientLeft;
+            } else {
+                t += p.offsetTop;
+                l += p.offsetLeft;
+            }
+            p = p.offsetParent;
+        }
+        return {top: t, left: l};
+    }
+    var oImgs = document.getElementsByTagName("img");
+    for (var i = 0; i < oImgs.length; i++) {
+        var oImg = oImgs[i];
+        oImg.b = offset(oImg).top + oImg.offsetHeight;
+    }
+    window.onscroll = function () {
+        var h = (document.documentElement.scrollTop || document.body.scrollTop) + (document.documentElement.clientHeight || document.body.clientHeight);
+        for (var i = 0; i < oImgs.length; i++) {
+            var oImg = oImgs[i];
+            if (oImg.loaded)continue;
+            loadImg(oImg,h);
+        }
+
+    };
+    function loadImg(oImg, h) {
+        if (h > oImg.b) {
+            oImg.src = "o_loading.gif";
+            var relSrc=oImg.getAttribute("realImg")+"?"+Math.random();
+            var tempImg = new Image;
+            tempImg.src = relSrc;
+            tempImg.onload = function () {
+                oImg.src = relSrc;
+                oImg.loaded = true;
+            }
+        }
+    }
+</script>

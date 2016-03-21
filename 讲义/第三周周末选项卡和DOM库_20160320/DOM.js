@@ -216,6 +216,17 @@ DOM.removeClass=function(ele,strClass){
 	
 	ele.className=tempStr.replace(reg," ");
 }
+DOM.nextAll = function nextAll(ele) {
+	var ary = [];
+	var next = ele.nextSibling;
+	while (next) {
+		if (next.nodeType === 1) {
+			ary.push(next);
+		}
+		next = next.nextSibling;
+	}
+	return ary;
+};
 
 
 
