@@ -83,7 +83,6 @@ DOM.siblings=function siblings(ele){//获得ele的所有的元素兄弟节点
 }
 
 DOM.next=function next(ele){//获得ele相邻的弟弟元素节点，返回值最多只有一个
-
 //null用typeof 
 //通用原则是一个属性或一个变量，如果是对象类型的，需要初始化的时候，赋一个null值，
 //如果不是对象类型，比如字符串，str="";
@@ -138,8 +137,6 @@ DOM.insertAfter=function (oldEle,newEle){//和insertBefore相对应，表示把n
 DOM.prepend=function (parent,child){//此方法和appendChild相对应，把child元素添加成parent的第一个子元素
 	//我们知道appendChild是在末尾的位置添加子节点
 	parent.insertBefore(child,parent.firstChild);
-	
-
 	
 }
 
