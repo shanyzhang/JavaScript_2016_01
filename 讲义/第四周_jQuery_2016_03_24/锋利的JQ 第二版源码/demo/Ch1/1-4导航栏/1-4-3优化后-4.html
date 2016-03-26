@@ -51,6 +51,16 @@
 </html>
 <script src="../../../../../第三周周末选项卡和DOM库_20160320/DOM.js"></script>
 <script>
+	/*
+	 第一步：找到level1下边的子元素a，然后绑定事件
+	 通过DOM.getElesByClass方法找到所有的level1元素，然后再把各个level1元素下的子元素a找出来，然后再绑定事件
+
+	 第二步：找到this下的ul，让其显示
+	 就是this的弟弟，这个相对简单
+
+	 第三步：找到this的父节点的兄弟节点中的ul子元素，让其隐藏
+	 找到this的父节点，然后再找到父节点的兄弟节点，然后再把每一个兄弟节点中的ul子节点找出来（循环），然后再把这些ul子节点设为display:none
+	 */
 var level1s=DOM.getElesByClass("level1");
 var oAs=[];
 for(var i=0;i<level1s.length;i++){
