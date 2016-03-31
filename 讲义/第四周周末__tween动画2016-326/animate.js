@@ -182,7 +182,7 @@ function animate(ele,obj,duration,effect,callback){
 	}
 	
 	
-	var oChange={}
+	var oChange={};
 	var oBegin={};
 	
 	var flag=0;//用来记录有多少个有效change的记数器
@@ -247,7 +247,7 @@ animate.getCss=function(ele,attr){
 		}
 		return parseFloat(ele.currentStyle[attr]);	
 	}
-}
+};
 
 animate.setCss=function(ele,attr,value){
 	if(attr=="opacity"){
@@ -256,4 +256,4 @@ animate.setCss=function(ele,attr,value){
 	}else{
 		ele.style[attr]=value+"px";
 	}
-}
+};

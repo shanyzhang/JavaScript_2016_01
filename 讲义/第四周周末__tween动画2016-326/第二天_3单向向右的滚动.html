@@ -24,7 +24,7 @@ black;}
         <div style="background:green;">三</div>
         <div style="background:blue;">四</div>
         <div style="background:pink;">五</div>
-        <div>六（假冒的第一张）</div>
+        <div>一</div>
     </div>
     <ul id="btn"> <!-- 按钮 -->
     	<li class="promoted">1</li><li>2</li><li>3</li><li>4</li><li>5</li>
@@ -41,6 +41,21 @@ var oLis=document.getElementById("btn").getElementsByTagName("li");
 var oDiv=document.getElementById("inner").getElementsByTagName("div").item(0);
 //inner.appendChild(oDiv.cloneNode(true));
 inner.style.width=inner.offsetWidth+oDiv.offsetWidth+"px";
+for(var i=0;i<oLis.length;i++){
+	oLis.item(i).n=i;
+	oLis.item(i).onclick=function(){
+		animate(inner,{left:this.n*-500},800);
+		//clearInterval();
+		step=this.n;
+		current(step);
+		clearTimeout(autoTimer);//和clearInterval通用
+		//当点击事件触发后五秒钟再启动这个自动的播放，自动播放还是每隔两秒一次
+		autoTimer=window.setTimeout(function(){
+			autoTimer=window.setInterval(autoRight,2000);
+		},3000);
+		//3000,3+2 >3 <5;10 autoMove,执行了两次
+	}
+}
 
 var step=0;
 
@@ -50,12 +65,23 @@ function autoRight(){
 		//alert("到了最左边了，没法走了");
 		inner.style.left="-2500px";
 		step=4;//从索引5走到索引4
-		//alert("现在已经切换过来了")	
+		//alert("现在已经切换过来了")
+
+	}
+	if(step==6){
+		current(4);
+	} else{
+		current(step);
 	}
 	animate(inner,{left:step*-500},600);
 	
 }
-
+function current(n){
+	for(var i=0;i<oLis.length;i++){
+		oLis[i].className="";
+	}
+	oLis[n].className="promoted";
+}
 
 window.setInterval(autoRight,2000);
 

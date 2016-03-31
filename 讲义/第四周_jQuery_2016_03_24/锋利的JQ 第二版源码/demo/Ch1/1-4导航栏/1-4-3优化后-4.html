@@ -68,7 +68,6 @@ for(var i=0;i<level1s.length;i++){
 }
 for(var i=0;oAs.length;i++){
 	oAs[i].onclick=function(){
-		
 		this.nextElementSibling;
 		var oUl=DOM.next(this);
 		oUl.style.display="block";
@@ -83,12 +82,12 @@ for(var i=0;oAs.length;i++){
 			DOM.children(otherLis[i],"ul")[0].style.display="none";
 		}
 		
-		/*
+
 		//然后再让这些ul隐藏
-		for(var i=0;i<otherUls.length;i++){
-			otherUls[i].style.display="none";	
-		}
-		*/
+//		for(var i=0;i<otherUls.length;i++){
+//			otherUls[i].style.display="none";
+//		}
+//
 		
 		return false;
 	}
