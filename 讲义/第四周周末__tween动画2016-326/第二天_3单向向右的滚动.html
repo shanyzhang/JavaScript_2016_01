@@ -10,7 +10,7 @@
 black;}
 #btn{ list-style:none; padding:0; margin:0; width:300px; position:absolute; right:30px; bottom:30px; height:50px; }
 #btn li{ padding:0; margin:10px; width:30px; height:30px; border-radius:15px; background:orange; color:#606; font-size:18px; font-weight:bold; float:left; line-height:30px; text-align:center; cursor:pointer; }
-#btn li.promoted{ background:#039; color:red; font-weight:bold;}
+#btn li.promoted{ background:#039; color:palegreen; font-weight:bold;}
 
 </style>
 
@@ -36,7 +36,8 @@ black;}
 <script src="animate.js"></script>
 <script>
 var oLis=document.getElementById("btn").getElementsByTagName("li");
-
+var step=0;
+var autoTimer=null;
 //以下是用JS代码把图片由五张扩展到六张，首尾相同
 var oDiv=document.getElementById("inner").getElementsByTagName("div").item(0);
 //inner.appendChild(oDiv.cloneNode(true));
@@ -46,18 +47,17 @@ for(var i=0;i<oLis.length;i++){
 	oLis.item(i).onclick=function(){
 		animate(inner,{left:this.n*-500},800);
 		//clearInterval();
-		step=this.n;
-		current(step);
 		clearTimeout(autoTimer);//和clearInterval通用
 		//当点击事件触发后五秒钟再启动这个自动的播放，自动播放还是每隔两秒一次
 		autoTimer=window.setTimeout(function(){
 			autoTimer=window.setInterval(autoRight,2000);
 		},3000);
+		step=this.n;
+		current(step);
 		//3000,3+2 >3 <5;10 autoMove,执行了两次
 	}
 }
 
-var step=0;
 
 function autoRight(){
 	step--;
@@ -83,7 +83,7 @@ function current(n){
 	oLis[n].className="promoted";
 }
 
-window.setInterval(autoRight,2000);
+autoTimer=window.setInterval(autoRight,2000);
 
 
 </script>
