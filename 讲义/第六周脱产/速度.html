@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var eles=document.getElementsByTagName("div");
+    var zIndex=1;
+    function increaseIndex(){
+        this.style.zIndex=++zIndex;
+    }
+    for(var i=0;i<eles.length;i++){
+        on(eles[i],"mousedown",down);
+        on(eles[i],"selfdragstart",clearEffect);//selfdragstart拖拽开始的代号
+        on(eles[i],"selfdragging",getSpeed);//selfdragging拖拽进行中的代号
+        on(eles[i],"selfdragend",fly);
+        on(eles[i],"selfdragend",drop);
+        on(eles[i],"selfdragend",getSpeed);
+    }
+</script>
