@@ -55,11 +55,6 @@ function down(e){
 		//使用原生的Function.prototype.bind实现
 		this.MOVE=move.bind(this);//原理和上边写的processThis一样
 		this.UP=up.bind(this);
-		
-		
-		
-		
-		
 		on(document,"mousemove",this.MOVE);//每个方法里的this指向当前被拖拽的元素
 		on(document,"mouseup",this.UP);
 	}
