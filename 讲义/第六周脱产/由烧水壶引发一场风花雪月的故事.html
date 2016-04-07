@@ -9,14 +9,60 @@
 </body>
 </html>
 <script>
+function EventEmitter(){//事件发射器类，这个构造函数可以为空
 
+}
+EventEmitter.prototype.on=function(type,fn){//表示把fn绑定到type上
+	//on方法的工作就是：把fn登记在以type为区分符的一张清单上（清单即数组）
+	if(!this["emitter"+type])this["emitter"+type]=[];//this指类的这个实例
+	var a =this["emitter"+type];
+	//判断是否是重复绑定
+	for(var i=0;i< a.length;i++){
+		if(a[i]==fn)return;
+	}
+	a.push(fn);
+}
+EventEmitter.prototype.run=function(type){//负责通知，发布（配合off方法）
+	var a=this["emitter"+type];
+	if(a){
+		for(var i=0;i< a.length;i++){//功能：遍历执行
+			if(typeof a[i]=="function"){//如a数组里面的事件类型不是一个方法，即off方法里判断的a[i]=null,就删掉
+				a[i].call(this);
+			}else{
+				a.splice(i,1);
+				i--;
+			}
+
+		}
+	}
+}
+EventEmitter.prototype.off=function(type,fn){//移除
+	var a=this["emitter"+type];
+	if(a){
+		for(var i=0;i< a.length;i++){
+			if(a[i]==fn){
+				a[i]=null;
+			}
+		}
+	}
+}
 //说:烧水
 function Pot(){//水壶
 	
 }
+Pot.prototype=new EventEmitter;//把Pot的原型地址指向了EventEmitter的实例，强行修改了
+//Pot.prototype.__proto__=EventEmitter.prototype;//改变了Pot的原型链给改变了，增加了一层EventEmitter.prototype，让EventEmitter.prototype指向Object,自身的还存在(IE不支持)
+//以上两种方法的区别
+//
+
+
 Pot.prototype.boiling=function (){
+	var that=this;
 	window.setTimeout(function(){
 		console.log("水烧开啦！");
+		//this.run("boiling");//让方法执行，但这样会报错，此this指向window，如果没有定时器则可以
+		that.run("boiling");
+		//run.call（）是错的，全局方法里面没有run方法
 	},5000);
 	//报警器--产生一个回调
 }
@@ -40,6 +86,6 @@ pot1.on("boiling",noodles);
 pot1.on("boiling",shower);
 pot1.boiling();
 
-
+//run;//自动执行--就当是“水沸腾”这个事件发生的时候，自动执行run方法，由run方法来“通知”约定了“水沸腾”这件事的各个方法来执行
 
 </script>

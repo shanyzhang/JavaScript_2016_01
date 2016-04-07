@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 function on(ele,type,fn){
     //��self��ͷ���¼��������Զ�����¼�����(type)
     if(/^self/.test(type)){
-        if(!ele["aSelf"+type]) ele["aSelf"+type]=[];
+        if(!ele["aSelf"+type]) ele["aSelf"+type]=[];//���ﲻ���ڣ��ʹ���һ��
         var a=ele["aSelf"+type];
         for(var i=0;i< a.length;i++){
             if(a[i]==fn)return;
@@ -49,7 +49,7 @@ function up(e){
 function processThis(fn,obj){//����һ���µķ�����ʹfn���ܲ��䣬��fn�����е�ʱ��thisָ��obj
     return function(e){fn.call(obj,e)}
 }
-function selRun(selfType,e){
+function selRun(selfType,e){//��һ���������Զ����¼������ͣ��ڶ���������ϵͳ���¼�����
     var a=this["aSelf"+selfType];
     if(a){
         for(var i=0;i< a.length;i++){
@@ -58,7 +58,7 @@ function selRun(selfType,e){
     }
 }
 selRun.call(this,"selfdragstart",e)//eָ���ǽ�ϵͳ���¼�����ȥ
-=======
+
 function down(e){
 	this.x=this.offsetLeft;
 	this.y=this.offsetTop;
@@ -77,7 +77,7 @@ function down(e){
 		on(document,"mouseup",this.UP);
 	}
 	e.preventDefault();
-	selfRun.call(this,"selfdragstart",e);//这是关键一步
+	selfRun.call(this,"selfdragstart",e);//这是关键�?�?
 	
 }
 function move(e){
@@ -120,14 +120,14 @@ function fly(){
 		var current=this.speed+this.offsetLeft;//正常运动时应该到达的位置
 		if(current>=maxRight){
 			this.style.left=maxRight+"px";
-			this.speed*=-1;//让盒子往相反的方向运动
+			this.speed*=-1;//让盒子往相反的方向运�?
 		}else if(current<=0){
 			this.style.left=0;
 			this.speed*=-1;
 		}else{
 			this.style.left=current+"px";
 		}
-		if(Math.abs(this.speed)>=0.5)//移动的距离大于等于0.5才有意义，所以是这个判断
+		if(Math.abs(this.speed)>=0.5)//移动的距离大于等�?0.5才有意义，所以是这个判断
 			this.flyTimer=window.setTimeout(processThis(fly,this),30);
 
 	}
@@ -135,8 +135,8 @@ function fly(){
 }
 
 
-function drop(){//自由落体的动画
-	//先要指定一个“重力加速度”
+function drop(){//自由落体的动�?
+	//先要指定�?个�?�重力加速度�?
 	if(this.dropSpeed){
 		this.dropSpeed+=9.8;	
 	}else{
@@ -151,16 +151,15 @@ function drop(){//自由落体的动画
 	if(current>=maxBottom){//撞到地面上了
 		this.style.top=maxBottom+"px";
 		this.dropSpeed*=-1;//反弹
-		this.flag++;//撞到边界上则累加，如果出现this.flag大于2，是什么情况？
+		this.flag++;//撞到边界上则累加，如果出现this.flag大于2，是�?么情况？
 		
 	}else{
 		this.style.top=current+"px";
-		this.flag=0;//正常运动则归零
+		this.flag=0;//正常运动则归�?
 	}
 	if(this.flag<2)
 		this.dropTimer=window.setTimeout(processThis(drop,this),30);
 	
 }
 
-//在新的动画执行之前，就要把原来的动画效果清除到
->>>>>>> a6be0f5c28719cf7ea422c38c7f51d93f4f374d4
+//在新的动画执行之前，就要把原来的动画效果清除�?

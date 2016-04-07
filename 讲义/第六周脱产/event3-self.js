@@ -34,7 +34,7 @@ function on(ele,type,fn){
 	
 	
 }
-function run(){
+function run(){//解决系统的事件的兼容性问题（IE）
 	var e=window.event;
 	var type=e.type;
 	if(!e.target){
@@ -84,7 +84,7 @@ function selfRun(selfType,e){
 	var a=this["aSelf"+selfType];
 	if(a){
 		for(var i=0;i<a.length;i++){
-			a[i].call(this,e);	
+			a[i].call(this,e);
 		}
 	}	
 }

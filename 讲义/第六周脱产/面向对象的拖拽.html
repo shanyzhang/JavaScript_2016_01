@@ -28,9 +28,6 @@ function Drag(ele){//ele是被拖拽的DOM对象
 	this.UP=processThis(this.up,this);
 	//on(this.ele,"mousedown",this.down);//如果这样绑定事件，则this.down方法里的this会按着事件绑定的原则来处理，即：this指向this.ele。和刚才设定的面向对象this的原则冲突了
 	on(this.ele,"mousedown",this.DOWN);
-	
-	
-	
 }
 
 Drag.prototype.down=function(e){
