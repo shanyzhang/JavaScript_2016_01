@@ -11,6 +11,7 @@
 <script>
 function EventEmitter(){//事件发射器类，这个构造函数可以为空
 
+<<<<<<< HEAD
 }
 EventEmitter.prototype.on=function(type,fn){//表示把fn绑定到type上
 	//on方法的工作就是：把fn登记在以type为区分符的一张清单上（清单即数组）
@@ -46,10 +47,65 @@ EventEmitter.prototype.off=function(type,fn){//移除
 		}
 	}
 }
+=======
+function EventEmitter(){//事件发射器类
+	
+}
+
+EventEmitter.prototype.on=function(type,fn){//订阅
+	//on方法的工作就是：把fn登记在以type为区分符的一张清单（数组）
+	//if(!ele["aEvent"+type]);
+	if(!this["emitter"+type])this["emitter"+type]=[];
+	
+	var a=this["emitter"+type];
+	for(var i=0;i<a.length;i++){
+		if(a[i]==fn)return;	
+		
+	}
+	a.push(fn);
+	
+}
+
+EventEmitter.prototype.run=function(type){//通知，发布
+	var a=this["emitter"+type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(typeof a[i]=="function")
+				a[i].call(this);
+			else{
+				a.splice(i,1);
+				i--;	
+			}
+		}
+	}
+	
+}
+
+EventEmitter.prototype.off=function(type,fn){
+	var a=this["emitter"+type];
+	if(a){
+		for(var i=0;i<a.length;i++){
+			if(a[i]==fn){
+				//a.splice(i,1);
+				a[i]=null;
+					
+			}
+				
+		}
+		
+	}
+}
+
+/*var obj=new EventEmitter;
+obj.on("click",fn);
+ele.addEventListener(type,fn,false);*/
+
+>>>>>>> 4b89eb3b3deabb38aeac2395faad9bf8ef75dc42
 //说:烧水
 function Pot(){//水壶
 	
 }
+<<<<<<< HEAD
 Pot.prototype=new EventEmitter;//把Pot的原型地址指向了EventEmitter的实例，强行修改了
 //Pot.prototype.__proto__=EventEmitter.prototype;//改变了Pot的原型链给改变了，增加了一层EventEmitter.prototype，让EventEmitter.prototype指向Object,自身的还存在(IE不支持)
 //以上两种方法的区别
@@ -63,13 +119,26 @@ Pot.prototype.boiling=function (){
 		//this.run("boiling");//让方法执行，但这样会报错，此this指向window，如果没有定时器则可以
 		that.run("boiling");
 		//run.call（）是错的，全局方法里面没有run方法
+=======
+Pot.prototype=new EventEmitter;
+//Pot.prototype.__proto__=EventEmitter.prototype;
+
+Pot.prototype.boiling=function (){
+
+	var that=this;
+	window.setTimeout(function(){
+		console.log("水烧开啦！");
+		that.run("boiling");
+>>>>>>> 4b89eb3b3deabb38aeac2395faad9bf8ef75dc42
 	},5000);
-	//报警器--产生一个回调
+	
 }
 
 var pot1=new Pot();
 
 pot1.boiling();
+
+
 
 
 //烧水（30）--泡方便面(5)---洗澡(15)
@@ -86,6 +155,16 @@ pot1.on("boiling",noodles);
 pot1.on("boiling",shower);
 pot1.boiling();
 
+<<<<<<< HEAD
 //run;//自动执行--就当是“水沸腾”这个事件发生的时候，自动执行run方法，由run方法来“通知”约定了“水沸腾”这件事的各个方法来执行
+=======
+//run;//自动执行--就是当“水沸腾”这个件事发生的时候，自动执行run方法，由run方法来“通知”约定了“水沸腾”这件的各个方法来执行
+
+alert(1);
+window.setTimeout(function(){alert(2)},0);
+alert(3);
+
+
+>>>>>>> 4b89eb3b3deabb38aeac2395faad9bf8ef75dc42
 
 </script>
