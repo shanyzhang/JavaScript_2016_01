@@ -129,7 +129,7 @@ function getSpeed(e){
 }
 function fly(){
 	this.flySpeed*=.98;
-	var l=0;//左边的最小边界
+	var l=0;//左边的最小边界衰减
 	var r=(document.documentElement.clientWidth||document.body.clientWidth)-this.ele.offsetWidth;//右边能到达的边界
 	var current=this.ele.offsetLeft+this.flySpeed;
 	if(current<=l){
