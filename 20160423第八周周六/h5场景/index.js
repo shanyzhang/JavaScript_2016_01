@@ -22,7 +22,7 @@ if (winW / winH < desW / desH) {
     oLi.addEventListener("touchstart", start, false);
     oLi.addEventListener("touchmove", move, false);
     oLi.addEventListener("touchend", end, false);
-})
+});
 
 window.setTimeout(function(){
     oLis[0].firstElementChild.id="a0";
@@ -55,7 +55,7 @@ function move(e) {
         }
         arguments[0].className = "";
         arguments[0].firstElementChild.id = "";
-    })
+    });
     if (movePos > 0) {//下滑动
         //获得上一张的索引(通过当前这张的索引知道上一张的索引)
         this.prevsIndex = index == 0 ? lastItem : index - 1;
@@ -94,12 +94,11 @@ function end(e) {
             this.style.webkitTransition = "";
             //增加执行动画的id名
             this.firstElementChild.id = "a"+this.index
-
-        },false)
+        },false);
         this.flag = false;
     }
 }
 //调试用的
 document.addEventListener("touchmove",function(e){
 
-})
+});
