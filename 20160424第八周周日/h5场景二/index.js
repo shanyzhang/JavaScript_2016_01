@@ -41,7 +41,7 @@ function fnLoad() {
         }
     })
 }
-fnLoad()
+fnLoad();
 
 var phone = document.querySelector("#phone");
 var speak = document.querySelector(".speak");
@@ -71,7 +71,7 @@ var fnPhone = {
             }, 1000)
         }
     }
-}
+};
 
 /*
  * 1.前三个li每隔1秒往上移动20px,回到原始位置
